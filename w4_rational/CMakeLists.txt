@@ -1,0 +1,5 @@
+add_executable(w4_rat_1 main1.cpp)
+add_executable(w4_rat_2 main2.cpp)
+add_executable(w4_rat_3 main3.cpp)
+add_executable(w4_rat_4 main4.cpp)
+add_executable(w4_rat_5 main5.cpp)

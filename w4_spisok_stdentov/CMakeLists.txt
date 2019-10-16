@@ -1,0 +1,1 @@
+add_executable(w4_spisok_st main.cpp)
