@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <sstream>
 #include <cmath>
 using namespace std;
 
@@ -56,6 +57,9 @@ public:
         return Rational(new_num, new_den);
     }
 
+    friend std::ostream& operator<<(std::ostream& stream, const Rational& rational);
+    friend std::istream& operator>>(std::istream& stream, Rational& rational);
+
 private:
 
     void Cut(){
@@ -85,6 +89,19 @@ private:
     int numerator;
     int denominator;
 };
+
+std::ostream& operator<<(std::ostream& stream, const Rational& rational){
+    stream << rational.numerator << '/' << rational.denominator;
+    return stream;
+}
+
+std::istream& operator>>(std::istream& stream, Rational& rational){
+    stream >> rational.numerator;
+    stream.ignore(1);
+    stream >> rational.denominator;
+    rational.Cut();
+    return stream;
+}
 
 int main() {
     {
