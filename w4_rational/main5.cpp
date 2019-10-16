@@ -5,6 +5,7 @@
 #include <cmath>
 #include <set>
 #include <map>
+#include <vector>
 
 using namespace std;
 
@@ -59,6 +60,10 @@ public:
     }
 
     bool operator<(const Rational& other) const {
+        return ((*this) - other).numerator < 0;
+    }
+
+    bool operator>(const Rational& other) const {
         return ((*this) - other).numerator > 0;
     }
 
@@ -108,11 +113,37 @@ std::istream& operator>>(std::istream& stream, Rational& rational){
     return stream;
 }
 
-int main(){
-    set<Rational> rationals;
-    rationals.insert(Rational(1, 2));
-    rationals.insert(Rational(1, 3));
+int main() {
+    {
+        const set<Rational> rs = {{1, 2}, {1, 25}, {3, 4}, {3, 4}, {1, 2}};
+        if (rs.size() != 3) {
+            cout << "Wrong amount of items in the set" << endl;
+            return 1;
+        }
 
-    map<Rational, string> name;
-    name[Rational(1, 2)] = "одна вторая";
+        vector<Rational> v;
+        for (auto x : rs) {
+            v.push_back(x);
+        }
+        if (v != vector<Rational>{{1, 25}, {1, 2}, {3, 4}}) {
+            cout << "Rationals comparison works incorrectly" << endl;
+            return 2;
+        }
+    }
+
+    {
+        map<Rational, int> count;
+        ++count[{1, 2}];
+        ++count[{1, 2}];
+
+        ++count[{2, 3}];
+
+        if (count.size() != 2) {
+            cout << "Wrong amount of items in the map" << endl;
+            return 3;
+        }
+    }
+
+    cout << "OK" << endl;
+    return 0;
 }
