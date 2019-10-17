@@ -1,0 +1,1 @@
+add_executable(w4_finctia_esure main.cpp)
