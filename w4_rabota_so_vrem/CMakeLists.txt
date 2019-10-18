@@ -1,0 +1,1 @@
+add_executable(w4_rabot_s_vrem main.cpp)
