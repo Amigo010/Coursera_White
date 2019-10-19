@@ -10,7 +10,8 @@ set(CMAKE_CXX_STANDARD 17)
 #add_subdirectory(w4_rational)
 #add_subdirectory(w4_functia_ensure)
 #add_subdirectory(w4_rabota_so_vrem)
-add_subdirectory(w5_final)
+#add_subdirectory(w5_final)
+add_subdirectory(RotateArray)
 
 #git remote add origin https://github.com/Amigo010/Coursera_White.git
 #git push -u origin master
